@@ -9,7 +9,7 @@ public class StudentMarksCounter {
 
     public void count() {
         // Specify the path to your Excel file
-        String excelFilePath = "E:/phemily/Priya/2024/NEET/NEET 24 Jharkhand - centre wise/koderma/261501.xlsx";
+        String excelFilePath = "";
 
         try {
             int ctr = 0;
