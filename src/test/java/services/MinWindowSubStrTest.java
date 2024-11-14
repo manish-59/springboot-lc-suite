@@ -7,6 +7,6 @@ public class MinWindowSubStrTest {
     @Test
     public void testMinWindow(){
 
-        System.out.println(MinWindowSubStr.minWindow("ADOBECODEBANC", "ABC"));
+        System.out.println("Output is -" + MinWindowSubStr.minWindow("abc", "bc"));
     }
 }

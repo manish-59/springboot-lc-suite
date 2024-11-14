@@ -5,54 +5,85 @@ import java.util.Map;
 
 public class LRUCache {
 
-    Map<Integer,Node> map=new HashMap<>();
-    int cap;
-    Node head =new Node(0,0);
-    Node tail=new Node(0,0);
+    final int capacity;
+    final Map<Integer, ListNode> cache;
+    final ListNode head;
+    final ListNode tail;
+
+    static class ListNode {
+        int key, value;
+        ListNode prev, next;
+        ListNode(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
 
     public LRUCache(int capacity) {
-        cap=capacity;
-        head.next=tail;
-        tail.prev=head;
-
+        this.capacity = capacity;
+        this.cache = new HashMap<>();
+        // dummy head and tail nodes to avoid null checks
+        head = new ListNode(0, 0);
+        tail = new ListNode(0, 0);
+        head.next = tail;
+        tail.prev = head;
     }
 
     public int get(int key) {
-        if(map.containsKey(key)){
-            Node ans=map.get(key);
-            remove(ans);
-            insert(ans);
+        if (!cache.containsKey(key)) return -1;
 
-            return ans.value;
-        }
-        else{
-            return -1;
-        }
+        // move the accessed node to the head
+        ListNode node = cache.get(key);
+        moveToHead(node);
+        return node.value;
     }
 
     public void put(int key, int value) {
-        if(map.containsKey(key)){
-            remove(map.get(key));
+        if (cache.containsKey(key)) {
+            // update the value and move to head
+            ListNode node = cache.get(key);
+            node.value = value;
+            moveToHead(node);
+        } else {
+            // add a new node
+            ListNode newNode = new ListNode(key, value);
+            cache.put(key, newNode);
+            addNode(newNode);
+
+            if (cache.size() > capacity) {
+                // remove the least recently used node
+                ListNode tailNode = removeTail();
+                cache.remove(tailNode.key);
+            }
         }
-        if(map.size()==cap){
-            remove(tail.prev);
-        }
-        insert(new Node(key,value));
     }
 
-    public void insert(Node node){
-        map.put(node.key,node);
-        node.next=head.next;
-        node.next.prev=node;
-        head.next=node;
-        node.prev=head;
+    private void addNode(ListNode node) {
+        node.prev = head;
+        node.next = head.next;
 
+        head.next.prev = node;
+        head.next = node;
     }
 
-    public void remove(Node node){
-        map.remove(node.key);
-        node.prev.next=node.next;
-        node.next.prev=node.prev;
+    private void removeNode(ListNode node) {
+        ListNode prev = node.prev;
+        ListNode next = node.next;
+
+        prev.next = next;
+        next.prev = prev;
     }
+
+    private void moveToHead(ListNode node) {
+        removeNode(node);
+        addNode(node);
+    }
+
+    private ListNode removeTail() {
+        ListNode res = tail.prev;
+        removeNode(res);
+        return res;
+    }
+
 }
 
