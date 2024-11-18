@@ -19,7 +19,7 @@ public class SubsetsII {
             if (i > start && nums[i] == nums[i - 1]) continue;
             tempList.add(nums[i]);
             backtrack(list, tempList, nums, i + 1);
-            tempList.remove(tempList.size() - 1);
+            tempList.removeLast();
         }
     }
 }
