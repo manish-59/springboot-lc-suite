@@ -3,6 +3,7 @@ package services;
 public class BalancedBinaryTree {
 
     //110
+    
     public static boolean isBalanced(TreeNode root) {
                 if (root == null) return true;
 
