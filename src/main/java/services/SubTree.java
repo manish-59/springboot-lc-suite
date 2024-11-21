@@ -2,6 +2,8 @@ package services;
 
 public class SubTree {
 
+    //572
+
     public static boolean isSubtree(TreeNode root, TreeNode subRoot) {
         if(root==null){
             return false;
@@ -13,16 +15,17 @@ public class SubTree {
         }
         return isSubtree(root.left,subRoot)||isSubtree(root.right,subRoot);
     }
-    public static boolean isIdentical(TreeNode node, TreeNode subroot){
-        if(node==null && subroot==null){
+
+    public static boolean isIdentical(TreeNode node, TreeNode subRoot){
+        if(node==null && subRoot==null){
             return true;
-        }else if(node==null || subroot==null || node.val!=subroot.val){
+        }else if(node==null || subRoot==null || node.val!=subRoot.val){
             return false;
         }
-        if(!isIdentical(node.left,subroot.left)){
+        if(!isIdentical(node.left,subRoot.left)){
             return false;
         }
-        if(!isIdentical(node.right,subroot.right)){
+        if(!isIdentical(node.right,subRoot.right)){
             return false;
         }
         return true;
