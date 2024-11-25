@@ -1,11 +1,14 @@
 package services;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MeetingRooms {
 
     //252
 
+    //brute
     public boolean canAttendMeetings(List<Interval> intervals) {
 
         int n = intervals.size();
@@ -18,6 +21,22 @@ public class MeetingRooms {
                 }
             }
         }
+        return true;
+    }
+
+    //sorting
+    public boolean canAttendMeetings2(List<Interval> intervals){
+
+        intervals.sort(Comparator.comparingInt(i -> i.start));
+
+        for(int i=1; i< intervals.size(); i++){
+            Interval A = intervals.get(i-1);
+            Interval B = intervals.get(i);
+            if(A.end > B.start){
+                return false;
+            }
+        }
+
         return true;
     }
 }

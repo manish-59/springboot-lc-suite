@@ -11,9 +11,7 @@ public class InsertInterval {
 
     public int[][] insert(int[][] intervals, int[] newInterval) {
         int[][] newIntervals = new int[intervals.length + 1][2];
-        for (int i = 0; i < intervals.length; ++i) {
-            newIntervals[i] = intervals[i];
-        }
+        System.arraycopy(intervals, 0, newIntervals, 0, intervals.length);
         newIntervals[intervals.length] = newInterval;
         return merge(newIntervals);
     }
