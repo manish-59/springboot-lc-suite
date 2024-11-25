@@ -5,6 +5,8 @@ import java.util.List;
 
 public class PalindromePartition {
 
+    //131
+
     public List<List<String>> partition(String s) {
 
         List<List<String>> res = new ArrayList<>();
@@ -23,7 +25,7 @@ public class PalindromePartition {
             if (isPalindrome(s, start, end - 1)) {
                 path.add(s.substring(start, end));
                 backtrack(s, end, path, result);
-                path.remove(path.size() - 1);
+                path.removeLast();
             }
         }
     }

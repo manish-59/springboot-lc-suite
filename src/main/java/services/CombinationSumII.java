@@ -6,13 +6,14 @@ import java.util.List;
 
 public class CombinationSumII {
 
+    //40
+
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 
 
         List<List<Integer>> res = new ArrayList<>();
-        List<Integer> temp = new ArrayList<>();
         Arrays.sort(candidates);
-        bckTrk(candidates, target, temp, res, 0);
+        bckTrk(candidates, target, new ArrayList<>(), res, 0);
 
         return res;
     }

@@ -5,6 +5,8 @@ import java.util.List;
 
 public class LetterCombosPhNums {
 
+    //17
+
     String[] map = new String[]{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
     List<String> res = new ArrayList<>();
 

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SolveNQueens {
+public class NQueens {
+
+    //51
 
     public List<List<String>> solveNQueens(int n) {
         char[][] board = new char[n][n];

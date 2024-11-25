@@ -1,15 +1,15 @@
 package services;
 
 import org.apache.commons.math3.util.Pair;
-
 import java.util.*;
-
-//355
 
 public class Twitter {
 
+    //355
+
     private Map<Integer, Set<Integer>> userMap;
     private List<Pair<Integer, Integer>> tweetList;
+
     public Twitter() {
 
         userMap = new HashMap<>();
@@ -22,7 +22,7 @@ public class Twitter {
             userMap.put(userId, new HashSet<>());
         }
 
-        tweetList.add(new Pair(userId, tweetId));
+        tweetList.add(new Pair<>(userId, tweetId));
     }
 
     public List<Integer> getNewsFeed(int userId) {

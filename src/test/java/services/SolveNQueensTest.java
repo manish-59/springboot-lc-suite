@@ -6,12 +6,10 @@ import java.util.List;
 
 public class SolveNQueensTest {
 
-    SolveNQueens snq = new SolveNQueens();
-
     @Test
     public void testSolveNQueens(){
 
-        List<List<String>> res = snq.solveNQueens(4);
+        List<List<String>> res = new NQueens().solveNQueens(4);
         for(List<String> l: res){
             for(String s: l){
                 System.out.print(s);

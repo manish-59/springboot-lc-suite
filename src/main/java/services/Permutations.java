@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Permutations {
 
+    //46
+
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         backtrack(list, new ArrayList<>(), nums);
@@ -19,7 +21,7 @@ public class Permutations {
                 if(tempList.contains(nums[i])) continue; // element already exists, skip
                 tempList.add(nums[i]);
                 backtrack(list, tempList, nums);
-                tempList.remove(tempList.size() - 1);
+                tempList.removeLast();
             }
         }
     }

@@ -5,17 +5,13 @@ import java.util.List;
 
 public class PalindromePartitionTest {
 
-    PalindromePartition pp = new PalindromePartition();
-
     @Test
     public void testPalindromePartition(){
 
-        List<List<String>> res = pp.partition("aab");
-        for(List<String> ls: res){
-            for(String s: ls){
-                System.out.print(s + " ");
-            }
+        List<List<String>> res = new PalindromePartition().partition("aab");
+        res.forEach(l -> {
+            l.forEach(e -> System.out.print(e + " "));
             System.out.println();
-        }
+        });
     }
 }

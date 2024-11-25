@@ -1,12 +1,10 @@
 package services;
 
-//295
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class MedianFinder {
+
+    //295
 
     List<Integer> nums;
 
@@ -34,4 +32,27 @@ public class MedianFinder {
 
         return med;
     }
+
+//    //using PQ
+//    private PriorityQueue<Integer> secondHalf = new PriorityQueue<>(Comparator.reverseOrder());
+//    private PriorityQueue<Integer> firstHalf = new PriorityQueue<>();
+//    private boolean even = true;
+//
+//    public double findMedian() {
+//        if (even)
+//            return (secondHalf.peek() + firstHalf.peek()) / 2.0;
+//        else
+//            return secondHalf.peek();
+//    }
+//
+//    public void addNum(int num) {
+//        if (even) {
+//            firstHalf.offer(num);
+//            secondHalf.offer(firstHalf.poll());
+//        } else {
+//            secondHalf.offer(num);
+//            firstHalf.offer(secondHalf.poll());
+//        }
+//        even = !even;
+//    }
 }

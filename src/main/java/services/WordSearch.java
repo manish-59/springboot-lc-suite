@@ -4,7 +4,7 @@ import java.util.*;
 
 public class WordSearch {
 
-    //79 - backtrack - medium
+    //79
 
     private class TrieNode1 {
         Map<Character, TrieNode1> nextNodes;
