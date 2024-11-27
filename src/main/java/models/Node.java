@@ -1,4 +1,4 @@
-package services;
+package models;
 
 public class Node {
     Node prev, next;

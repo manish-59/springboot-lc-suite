@@ -1,5 +1,7 @@
 package services;
 
+import models.ListNode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

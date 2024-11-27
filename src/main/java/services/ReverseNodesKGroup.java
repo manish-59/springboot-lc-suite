@@ -1,5 +1,7 @@
 package services;
 
+import models.ListNode;
+
 public class ReverseNodesKGroup {
 
     //25

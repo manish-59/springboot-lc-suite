@@ -1,5 +1,7 @@
 package services;
 
+import models.TreeNode;
+
 public class ValidateBST {
 
     //98

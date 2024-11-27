@@ -1,4 +1,4 @@
-package services;
+package models;
 
 public class TrieNode{
     public boolean isWord;

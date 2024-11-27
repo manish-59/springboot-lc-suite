@@ -1,5 +1,7 @@
 package services;
 
+import models.NodeRandomPtr;
+
 import java.util.HashMap;
 
 public class CopyLLRandomPtr {

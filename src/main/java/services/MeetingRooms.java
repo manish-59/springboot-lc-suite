@@ -1,6 +1,7 @@
 package services;
 
-import java.util.Collections;
+import models.Interval;
+
 import java.util.Comparator;
 import java.util.List;
 

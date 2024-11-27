@@ -1,5 +1,6 @@
 package services;
 
+import models.Interval;
 import org.junit.jupiter.api.Test;
 
 public class MeetingRoomsTest {

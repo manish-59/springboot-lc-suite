@@ -1,10 +1,10 @@
-package services;
+package models;
 
 public class NodeRandomPtr {
 
-    int val;
-    NodeRandomPtr next;
-    NodeRandomPtr random;
+    public int val;
+    public NodeRandomPtr next;
+    public NodeRandomPtr random;
 
     public NodeRandomPtr(int val) {
         this.val = val;

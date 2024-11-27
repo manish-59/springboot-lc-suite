@@ -2,10 +2,9 @@ package services;
 
 import java.util.Stack;
 
-public class ValidParentheses {
+public class ValidParenthesis {
 
     static {
-        // Calling isValid with an array of empty string multiple times (500 times)
         for(int i = 0; i < 500; i++) {
             isValid("");
         }

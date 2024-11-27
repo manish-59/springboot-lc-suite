@@ -1,5 +1,7 @@
 package services;
 
+import models.TreeNode;
+
 public class CountGoodNodesBT {
 
     static int ctr;
@@ -11,7 +13,7 @@ public class CountGoodNodesBT {
         helper(root,root.val);
         return ctr;
     }
-    public static void helper(TreeNode root,int max){
+    public static void helper(TreeNode root, int max){
         if(root==null){
             return;
         }

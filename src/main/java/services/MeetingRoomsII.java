@@ -1,5 +1,7 @@
 package services;
 
+import models.Interval;
+
 import java.util.*;
 
 public class MeetingRoomsII {
