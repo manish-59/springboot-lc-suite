@@ -5,58 +5,50 @@ import java.util.Queue;
 
 public class RottingOranges {
 
-    static class Triplet {
-        int row;
-        int coll;
-        int tmm;
-        Triplet(int i, int j, int t) {
-            this.row = i;
-            this.coll = j;
-            this.tmm = t;
-        }
-    }
-
     public int orangesRotting(int[][] grid) {
-        Queue<Triplet> q = new LinkedList<>();
-        int n = grid.length;
-        int m = grid[0].length;
-        int[][] vis = new int[n][m];
-        int countF=0;
-        for (int i=0; i<n; i++) {
-            for (int j=0; j<m; j++) {
-                if (grid[i][j]== 2) {
-                    q.add(new Triplet(i, j, 0));
-                    vis[i][j] = 2;
-                } else {
-                    vis[i][j] = 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        int[][] visited = grid;
+        Queue<int[]> q = new LinkedList<>();
+        int countFreshOrange = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (visited[i][j] == 2) {
+                    q.offer(new int[] {i, j});
                 }
+                if (visited[i][j] == 1) {
+                    countFreshOrange++;
+                }
+            }
+        }
+        if (countFreshOrange == 0)
+            return 0;
+        if (q.isEmpty())
+            return -1;
 
-                if (grid[i][j] == 1) {
-                    countF++;
-                }
-            }
-        }
-        int tm =0;
-        int[] rowe = {-1, 0, 1, 0};
-        int[] cole = {0, 1, 0, -1};
-        int cnt =0;
+        int minutes = -1;
+        int[][] dirs = {{1, 0},{-1, 0},{0, -1},{0, 1}};
         while (!q.isEmpty()) {
-            int row = q.peek().row;
-            int col = q.peek().coll;
-            int time = q.peek().tmm;
-            q.remove();
-            tm = time;
-            for (int i=0; i<4; i++) {
-                int r = row + rowe[i];
-                int c = col + cole[i];
-                if (r<n && r>-1 && c<m && c>-1 && grid[r][c] == 1 && vis[r][c] != 2) {
-                    q.add(new Triplet(r, c, time+1));
-                    vis[r][c] = 2;
-                    cnt++;
+            int size = q.size();
+            while (size-- > 0) {
+                int[] cell = q.poll();
+                int x = cell[0];
+                int y = cell[1];
+                for (int[] dir : dirs) {
+                    int i = x + dir[0];
+                    int j = y + dir[1];
+                    if (i >= 0 && i < m && j >= 0 && j < n && visited[i][j] == 1) {
+                        visited[i][j] = 2;
+                        countFreshOrange--;
+                        q.offer(new int[] {i, j});
+                    }
                 }
             }
+            minutes++;
         }
-        if (countF != cnt) return -1;
-        else return tm;
+
+        if (countFreshOrange == 0)
+            return minutes;
+        return -1;
     }
 }

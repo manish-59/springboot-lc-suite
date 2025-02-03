@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 public class Trie {
 
     //208
@@ -45,5 +47,42 @@ public class Trie {
 
     public boolean startsWith(String prefix) {
         return helper(prefix,false,false);
+    }
+
+    public void traverse(Trie node, StringBuilder temp, List<String> output) {
+        if (node == null) {
+            return;
+        }
+        if (node.isWordEnd) {
+            output.add(temp.toString());
+        }
+        for (int i = 0; i < 26; i++) {
+            char c = (char) ('a' + i);
+            if (node.containsKey(c)) {
+                temp.append(c);
+                traverse(node.getNext(c), temp, output);
+                temp.deleteCharAt(temp.length() - 1);
+            }
+        }
+
+    }
+
+    public boolean containsKey(char c) {
+        return children[c - 'a'] != null;
+    }
+
+    public Trie getNext(char c) {
+        return children[c - 'a'];
+    }
+
+    public Trie getPrefixNode(String word) {
+        Trie curr = this;
+        for (char c : word.toCharArray()) {
+            if (!curr.containsKey(c)) {
+                return new Trie();
+            }
+            curr = curr.getNext(c);
+        }
+        return curr;
     }
 }
