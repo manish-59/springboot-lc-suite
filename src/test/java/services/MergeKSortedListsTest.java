@@ -3,7 +3,7 @@ package services;
 import models.ListNode;
 import org.junit.jupiter.api.Test;
 
-import static services.MergeKSortedLists.createLinkedList;
+import static services.LinkedListUtils.createLinkedList;
 
 public class MergeKSortedListsTest {
 

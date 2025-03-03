@@ -1,0 +1,24 @@
+package services.sort;
+
+//Best Case: O(n^2)
+//Worst Case: O(n^2)
+//Space: O(1) (In-place)
+
+public class SelectionSort {
+
+    public void selectionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIdx]) {
+                    minIdx = j;
+                }
+            }
+            int temp = arr[minIdx];
+            arr[minIdx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+}

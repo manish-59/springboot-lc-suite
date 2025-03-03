@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static services.LinkedListUtils.createLinkedList;
+
 public class MergeKSortedLists {
 
     static {
@@ -21,20 +23,6 @@ public class MergeKSortedLists {
         Arrays.sort(array);
 
         return createLinkedList(array);
-    }
-
-    public static ListNode createLinkedList(int[] values) {
-        if (values == null || values.length == 0) return null;
-
-        ListNode head = new ListNode(values[0]);
-        ListNode current = head;
-
-        for (int i = 1; i < values.length; i++) {
-            current.next = new ListNode(values[i]);
-            current = current.next;
-        }
-
-        return head;
     }
 
     public static int[] toIntArr(ListNode[] lists){

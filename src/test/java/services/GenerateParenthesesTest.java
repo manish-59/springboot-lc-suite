@@ -7,6 +7,6 @@ public class GenerateParenthesesTest {
     @Test
     public void testGenerateParenthesis(){
 
-        System.out.println(GenerateParentheses.generateParenthesis(3));
+        System.out.println(new GenerateParentheses().generateParenthesis(3));
     }
 }

@@ -5,22 +5,32 @@ import java.util.List;
 
 public class GenerateParentheses {
 
+    //22
+
 //    Input: n = 3
 //    Output: ["((()))","(()())","(())()","()(())","()()()"]
 
-    static {
-        // Calling evalRPN with an array of blank multiple times (500 times)
-        for(int i = 0; i < 500; i++) {
-            generateParenthesis(0);
-        }
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
+        StringBuilder str = new StringBuilder();
+        backtracking (0, 0, n, res, str);
+        return res;
     }
 
-    public static List<String> generateParenthesis(int n) {
-
-        List<String> res = new ArrayList<>();
-
-
-
-        return res;
+    private void backtracking(int open, int close, int n, List<String> res, StringBuilder str){
+        if (open == close && open == n){
+            res.add(str.toString());
+            return;
+        }
+        if (open > close){
+            str.append(')');
+            backtracking(open, close+1, n, res, str);
+            str.deleteCharAt(str.length()-1);
+        }
+        if (open < n){
+            str.append('(');
+            backtracking(open+1, close, n, res, str);
+            str.deleteCharAt(str.length()-1);
+        }
     }
 }
