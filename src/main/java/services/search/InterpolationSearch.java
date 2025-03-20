@@ -7,7 +7,8 @@ public class InterpolationSearch {
 //    Worst Case: O(n) (For non-uniform distributions)
 //    Average Case: O(loglogn)
 
-    public int search(int arr[], int target) {
+    public int search(int[] arr, int target) {
+
         int low = 0, high = arr.length - 1;
 
         while (low <= high && target >= arr[low] && target <= arr[high]) {

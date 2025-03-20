@@ -8,7 +8,8 @@ public class JumpSearch {
 //    Worst Case: O(√n)
 //    Average Case: O(√n)
 
-    public int search(int arr[], int target) {
+    public int search(int[] arr, int target) {
+
         int n = arr.length;
         int step = (int) Math.floor(Math.sqrt(n));
         int prev = 0;

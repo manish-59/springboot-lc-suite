@@ -1,20 +1,27 @@
 package services;
 
-import java.util.Arrays;
-
 public class MinRotatedSortedArray {
 
-    static {
-        // Calling maxArea with an array of zeros multiple times (500 times)
-        for(int i = 0; i < 500; i++) {
-            findMin(new int[]{0});
+    //153
+    public  int findMin(int[] nums) {
+
+        int low=0,high=nums.length-1;
+        int ans=Integer.MAX_VALUE;
+        while(low<=high){
+            int mid =low + (high - low)/2;
+            if(nums[low]<=nums[high]){
+                ans=Math.min(ans,nums[low]);
+                break;
+            }
+            if(nums[low]<=nums[mid]){
+                ans=Math.min(ans,nums[low]);
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+                ans=Math.min(ans,nums[mid]);
+            }
         }
-    }
-
-    public static int findMin(int[] nums) {
-
-        Arrays.sort(nums);
-
-        return nums[0];
+        return ans;
     }
 }

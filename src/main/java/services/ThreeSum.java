@@ -1,8 +1,7 @@
 package services;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
 
 public class ThreeSum {
@@ -10,34 +9,54 @@ public class ThreeSum {
 //    Input: nums = [-1,0,1,2,-1,-4]
 //    Output: [[-1,-1,2],[-1,0,1]]
 
+    //15
+
     public List<List<Integer>> threeSum(int[] nums) {
 
-        List<List<Integer>> res = new ArrayList<>();
-        HashSet<Integer> hs = new HashSet<>();
+        List<List<Integer>> ans = new ArrayList<>();
 
-        for(int i: nums){
+        // Sort the array
+        Arrays.sort(nums);
 
-            hs.add(i);
+        for (int i = 0; i < nums.length - 2; i++) {
+            // Skip duplicate elements for i
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int j = i + 1;
+            int k = nums.length - 1;
+
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+
+                if (sum == 0) {
+                    // Found a triplet with zero sum
+                    ans.add(Arrays.asList(nums[i], nums[j], nums[k]));
+
+                    // Skip duplicate elements for j
+                    while (j < k && nums[j] == nums[j + 1]) {
+                        j++;
+                    }
+
+                    // Skip duplicate elements for k
+                    while (j < k && nums[k] == nums[k - 1]) {
+                        k--;
+                    }
+
+                    // Move the pointers
+                    j++;
+                    k--;
+                } else if (sum < 0) {
+                    // Sum is less than zero, increment j to increase the sum
+                    j++;
+                } else {
+                    // Sum is greater than zero, decrement k to decrease the sum
+                    k--;
+                }
+            }
         }
-
-        List<Integer> uniqueEle = new ArrayList<>(hs);
-//        for(int i=0; i< uniqueEle.size()-2;i++){
-//
-//            int j=i+1;
-//            int k=i+2;
-//
-//            for(; j< uniqueEle.size()-1;){
-//
-//                if(uniqueEle.get(i) + uniqueEle.get(j) + uniqueEle.get(k) == 0){
-//
-//                }
-//            }
-//
-//        }
-
-        
-
-        return res;
+        return ans;
     }
     
 }

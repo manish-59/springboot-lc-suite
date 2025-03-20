@@ -7,7 +7,8 @@ public class BinarySearch {
 //    Worst Case: O(logn) (Dividing the range in half)
 //    Average Case: O(logn)
 
-    public int search(int arr[], int target) {
+    public int search(int[] arr, int target) {
+
         int left = 0, right = arr.length - 1;
 
         while (left <= right) {

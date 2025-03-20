@@ -12,7 +12,7 @@ public class MaxSubArrayGreedy {
 
         for(int i=0; i<nums.length; i++){
             currentSum += nums[i];
-            maxSum = currentSum > maxSum ? currentSum : maxSum;
+            maxSum = Math.max(currentSum, maxSum);
 
             if(currentSum < 0){
                 currentSum = 0;
